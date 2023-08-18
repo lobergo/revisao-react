@@ -2,6 +2,23 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
+  const [email, setEmail] = useState("")
+  const [senha, setSenha] = useState("")
+
+  function handleEmail(evento){
+    setEmail(evento.target.value)
+  }
+
+  function handleSenha(evento){
+    setSenha(evento.target.value)
+  }
+
+  function handleSubmit(){
+    alert(`
+      Email: ${email}
+      Senha: ${senha}
+    `)
+  }
 
   return (
     <>
@@ -10,16 +27,18 @@ function App() {
       </header>
 
       <main>
-        <form action="">
+        <form action="" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="email">Email</label>
-            <input type="email" id='email' placeholder='Digite seu Email' />
+            <input type="email" id='email' placeholder='Digite seu Email' onChange={handleEmail}/>
           </div>
           <br />
           <div>
             <label htmlFor="senha">Senha</label>
-            <input type="password" id='senha' placeholder='Digite sua senha' />
+            <input type="password" id='senha' placeholder='Digite sua senha' onChange={handleSenha}/>
           </div>
+          <br />
+          <button>Enviar</button>
         </form>
       </main>
     </>
